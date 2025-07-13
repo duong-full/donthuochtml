@@ -17,84 +17,178 @@
 <head>
     <meta charset="UTF-8" />
     <title>Đơn thuốc trộn cám</title>
-    <link rel="stylesheet" href="/Application/Product-Dept/View/styless.css">
+    <style>
+    @media print {
+        @page {
+            size: A4 landscape;
+            margin: 0cm;
+            /* hoặc có thể là 1cm, 2cm tùy bạn */
+        }
+
+        body {
+            margin: 0;
+            /* bỏ lề trên giao diện nếu cần */
+        }
+    }
+
+
+    body {
+        font-family: "Times New Roman", serif;
+        font-size: 14px;
+        background-color: #ffffff;
+        margin: 0 auto;
+        width: 29.7cm;
+        min-height: 21cm;
+        box-sizing: border-box;
+    }
+
+    .container {
+        padding: 20px 40px;
+    }
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    .logo {
+        width: 80px;
+        height: auto;
+    }
+
+    .left-info,
+    .right-info {
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    .left-info {
+        flex: 1;
+    }
+
+    .right-info {
+        text-align: right;
+        flex: 1;
+    }
+
+    h2,
+    h3 {
+        text-align: center;
+        margin: 5px 0;
+    }
+
+    input[type="text"] {
+        border: none;
+        border-bottom: 1px dotted #000;
+        width: 30%;
+        font-family: inherit;
+    }
+
+    input[type="textx"] {
+        border: none;
+        border-bottom: 1px dotted #000;
+        width: 5%;
+        font-family: inherit;
+    }
+
+    .center {
+        text-align: center;
+    }
+
+    .section-title {
+        font-weight: bold;
+        margin-top: 25px;
+        text-transform: uppercase;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        font-size: 13px;
+    }
+
+    th,
+    td {
+        border: 1px solid #000;
+        padding: 4px;
+        text-align: center;
+    }
+
+    td input {
+        width: 100%;
+        border: none;
+        text-align: center;
+        font-size: 13px;
+    }
+
+    .note {
+        font-style: italic;
+        margin-top: 20px;
+        font-size: 13px;
+    }
+
+    .signature p {
+        margin: 10px 0;
+    }
+    </style>
+
 </head>
 
 <body>
-
     <div class="container">
         <!-- PHẦN ĐẦU TRANG -->
         <br class="header">
         <div class="left-info">
             <img src="/Application/Product-Dept/View/img/logo.png" alt="Logo CP" class="logo" /><br />
-
+            <p align="left"><b>Nhà Máy Thức Ăn Gia Súc Bình Định</b></p>
         </div>
-        <div class="left-header">
-            <strong>Tên Đơn Vị: CÔNG TY CỔ PHẦN CHĂN NUÔI C.P VIỆT NAM</strong><br />
-            <strong>Nhà Máy: NHÀ MÁY THỨC ĂN GIA SÚC BÌNH ĐỊNH</strong><br />
-            <strong>Địa Chỉ: Lô A2.1, A2.2, A2.3 VÀ A2.4, KCN Nhơn Hòa, Phường An Nhơn Nam, Tỉnh Gia Lai</strong><br />
-        </div>
-        <div class="right-header">
-            <strong>SỐ:</strong>
-            <input type="text" name="Số" placeholder="số" />
-        </div>
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
         <h2>ĐƠN YÊU CẦU CÁM TRỘN THUỐC ĐIỀU TRỊ / ĐIỀU TRỊ DỰ PHÒNG</h2>
-        <?php
-    // Tạo đối tượng ngày hiện tại
-    $today = new DateTime();
-    // Cộng thêm 1 tuần
-    $today->modify('+1 week');
-    // Lấy tuần và năm sau khi cộng
-    $nextWeek = $today->format('W');
-    $nextYear = $today->format('Y');
-?>
         <div class="center">
             (Đặt cám tuần
-            <input type="textx" class="small-input" value="<?= $nextWeek ?>" placeholder="week" /> /
-            <input type="textx" class="small-input" value="<?= $nextYear ?>" placeholder="year" />)
+            <input type="textx" class="small-input" placeholder="week" /> /
+            <input type="textx" class="small-input" placeholder="year" />)
         </div>
 
+        <style>
+        .center {
+            text-align: center;
+            margin-bottom: 10px;
+        }
 
+        .small-input {
+            width: 40px;
+            /* Chiều rộng ô nhập */
+            font-size: 12px;
+            /* Kích thước chữ nhỏ */
+            padding: 2px 4px;
+            text-align: center;
+        }
+        </style>
+        </br>
         <form method="POST">
-            <div class="left-info1">
-                <strong>Chi nhánh: </strong>
-                <input type="text1" name="chinhanh" placeholder="" /> <br />
-                <br />
-                <strong>Địa chỉ chi nhánh:</strong>
-                <input type="text1" name="diachichinhanh" placeholder="" /> <br />
-                <br />
-                <strong>Số Điện Thoại:</strong>
-                <input type="text1" name="sodienthoaichinhanh" placeholder="" /> <br />
+            <div class="left-info">
+                <strong>Chi nhánh/Địa chỉ chi nhánh:</strong>
+                <input type="text" name="chinhanh" placeholder="Chi nhánh" /> <br />
+                <strong>Tên trang trại:</strong>
+                <input type="text" name="trangtrai" placeholder="Tên trang trại" /> <br />
+                <strong>Họ&Tên chủ trại:</strong>
+                <input type="text" name="hoten" placeholder="Họ&Tên chủ trại" />
             </div>
         </form>
         <br />
         <form method="POST">
-            <div class="right-info1">
-                <strong>Tên Trại :</strong>
-                <input type="text1" name="tentrai" placeholder="" /><br /> <br />
+            <div class="left-info">
                 <strong>Địa chỉ trại:</strong>
-                <input type="text1" name="diachitrai" placeholder="" /><br /> <br />
-                <strong>Số điện thoại:</strong>
-                <input type="text1" name="sodienthoaitrai" placeholder="" /> <br />
+                <input type="text" name="diachitrai" placeholder="Địa chỉ trại" /><br />
+                <strong>Số điện thoại liên hệ của trại:</strong>
+                <input type="text" name="Sodienthoai" placeholder="Số điện thoại" />
             </div>
-
+            ...
 
         </form>
     </div>
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
 
     <!-- TIÊU ĐỀ ĐƠN -->
 
@@ -113,123 +207,10 @@
         </thead>
         <tbody>
             <tr>
-                <td>
-                    <select>
-
-                        <option value="HEO">HEO</option>
-                        <option value="GA">GÀ</option>
-                        <option value="VIT">VỊT</option>
-                        <option value="BO">BÒ</option>
-                    </select>
-                </td>
+                <td><input type="text" placeholder="Loại heo" /></td>
                 <td><input type="text" placeholder="Đơn vị con" /></td>
                 <td><input type="text" placeholder="Số tuần" /></td>
-                <td>
-                    <label for="don_dieu_tri" style="cursor: pointer; color: blue; text-decoration: underline;">
-                        Add đơn điều trị (ảnh hoặc PDF)
-                    </label>
-                    <input type="file" id="don_dieu_tri" accept=".pdf,image/*" multiple style="display: none;" />
-                    <div id="preview" style="margin-top: 1px; display: flex; flex-wrap: wrap; gap: 1px;"></div>
-                    <button id="clearAll" style="margin-top: 1px; display: none;">Hủy tất cả</button>
-                </td>
-
-                <!-- Modal hiển thị ảnh/pdf -->
-                <div id="imageModal">
-                    <span id="closeModal">&times;</span>
-                    <div id="modalContent"></div>
-                </div>
-
-                <script>
-                const fileInput = document.getElementById("don_dieu_tri");
-                const preview = document.getElementById("preview");
-                const clearAllBtn = document.getElementById("clearAll");
-                const imageModal = document.getElementById("imageModal");
-                const modalContent = document.getElementById("modalContent");
-                const closeModal = document.getElementById("closeModal");
-
-                let filesData = [];
-
-                fileInput.addEventListener("change", () => {
-                    const files = Array.from(fileInput.files);
-
-                    if (files.length + filesData.length > 3) {
-                        alert("Chỉ được chọn tối đa 3 tệp!");
-                        fileInput.value = "";
-                        return;
-                    }
-
-                    files.forEach((file) => {
-                        const fileURL = URL.createObjectURL(file);
-                        const fileType = file.type;
-
-                        const wrapper = document.createElement("div");
-                        wrapper.classList.add("preview-item");
-
-                        const removeBtn = document.createElement("button");
-                        removeBtn.classList.add("remove-btn");
-                        removeBtn.innerText = "X";
-
-                        removeBtn.addEventListener("click", () => {
-                            wrapper.remove();
-                            filesData = filesData.filter(f => f !== wrapper);
-                            if (filesData.length === 0) {
-                                clearAllBtn.style.display = "none";
-                            }
-                        });
-
-                        if (fileType.startsWith("image/")) {
-                            const img = document.createElement("img");
-                            img.src = fileURL;
-                            img.addEventListener("click", () => {
-                                modalContent.innerHTML = `<img src="${fileURL}" />`;
-                                imageModal.style.display = "flex";
-                            });
-                            wrapper.appendChild(img);
-                        } else if (fileType === "application/pdf") {
-                            const iframe = document.createElement("iframe");
-                            iframe.src = fileURL;
-                            iframe.width = 60;
-                            iframe.height = 60;
-                            iframe.addEventListener("click", () => {
-                                modalContent.innerHTML =
-                                    `<iframe src="${fileURL}" width="30%" height="30%"></iframe>`;
-                                imageModal.style.display = "flex";
-                            });
-                            wrapper.appendChild(iframe);
-                        }
-
-                        wrapper.appendChild(removeBtn);
-                        preview.appendChild(wrapper);
-                        filesData.push(wrapper);
-                    });
-
-                    if (filesData.length > 0) {
-                        clearAllBtn.style.display = "inline-block";
-                    }
-
-                    fileInput.value = ""; // reset input để có thể chọn lại file cũ
-                });
-
-                clearAllBtn.addEventListener("click", () => {
-                    preview.innerHTML = "";
-                    filesData = [];
-                    clearAllBtn.style.display = "none";
-                    fileInput.value = "";
-                });
-
-                closeModal.addEventListener("click", () => {
-                    imageModal.style.display = "none";
-                    modalContent.innerHTML = "";
-                });
-
-                imageModal.addEventListener("click", (e) => {
-                    if (e.target === imageModal) {
-                        imageModal.style.display = "none";
-                        modalContent.innerHTML = "";
-                    }
-                });
-                </script>
-                </td>
+                <td><input type="text" placeholder="Chuẩn đoán bệnh" /></td>
             </tr>
 
         </tbody>
@@ -242,191 +223,79 @@
                 <th>Tên thức ăn chăn nuôi</th>
                 <th>Mã số TĂCN trộn thuốc</th>
                 <th>Code cám đặt(S...)</th>
-                <th>Số lượng cám Bao (tấn)</th>
-                <th>Số lượng cám SILO (tấn)</th>
+                <th>Số lượng cám (tấn) (A)</th>
+                <th>Size cám</th>
             </tr>
         </thead>
         <tbody>
             <tr>
                 <td>
                     <h3>HEO SỮA </h3>
-                    <p>(7 ngày tuổi - 12kg thể trọng)</p>
+                    (7 ngày tuổi - 12kg thể trọng)
                 </td>
-                <td><strong>550SF</strong></td>
-                <td>
-                    <select>
-                        <option value="">-- Chọn đuôi thuốc --</option>
-                        <option value="none">NONE</option>
-                        <option value="S90">S90</option>
-                        <option value="S13">S13</option>
-                        <option value="S54">S54</option>
-                        <option value="S76">S76</option>
-                        <option value="S72">S72</option>
-                        <option value="S31">S31</option>
-                    </select>
-                </td>
-                <td><input type="text" placeholder="Cám bao" /></td>
-                <td><input type="text" placeholder="Cám silo" /></td>
+                <td><input type="text" placeholder="chọn bấm X" /> </br><b>550SF</b></td>
+                <td><input type="text" placeholder="Đuôi thuốc" /></td>
+                <td><input type="text" placeholder="Đơn vị tấn" /></td>
+                <td><input type="text" placeholder="Bao or silo" /></td>
             <tr>
                 <td>
                     <h3>HEO CON TẬP ĂN </h3>
-                    <p>(7 ngày tuổi - 20kg thể trọng)</p>
+                    (7 ngày tuổi - 20kg thể trọng)
                 </td>
-                <td><strong>551F</strong></td>
-                <td>
-                    <select>
-                        <option value="">-- Chọn đuôi thuốc --</option>
-                        <option value="none">NONE</option>
-                        <option value="S90">S90</option>
-                        <option value="S13">S13</option>
-                        <option value="S54">S54</option>
-                        <option value="S76">S76</option>
-                        <option value="S72">S72</option>
-                        <option value="S31">S31</option>
-                    </select>
-                </td>
-                <td><input type="text" placeholder="Cám bao" /></td>
-                <td><input type="text" placeholder="Cám silo" /></td>
+                <td><input type="text" placeholder="chọn bấm X" /></br> <b> 551F </b></td>
+                <td><input type="text" placeholder="Đuôi thuốc" /></td>
+                <td><input type="text" placeholder="Đơn vị tấn" /></td>
+                <td><input type="text" placeholder="Bao or silo" /></td>
             </tr>
             <tr>
                 <td>
                     <h3>HEO CON </h3>
-                    <p>(15- 25kg thể trọng)</p>
+                    (15- 25kg thể trọng)
                 </td>
-                <td><strong>551GPF</strong></td>
-                <td>
-                    <select>
-                        <option value="">-- Chọn đuôi thuốc --</option>
-                        <option value="none">NONE</option>
-                        <option value="S90">S90</option>
-                        <option value="S13">S13</option>
-                        <option value="S54">S54</option>
-                        <option value="S76">S76</option>
-                        <option value="S72">S72</option>
-                    </select>
-                </td>
-                <td><input type="text" placeholder="Cám bao" /></td>
-                <td><input type="text" placeholder="Cám silo" /></td>
+                <td><input type="text" placeholder="chọn bấm X" /></br><b>551GPF</b></td>
+                <td><input type="text" placeholder="Đuôi thuốc" /></td>
+                <td><input type="text" placeholder="Đơn vị tấn" /></td>
+                <td><input type="text" placeholder="Bao or silo" /></td>
             </tr>
             <tr>
                 <td>
                     <h3>HEO THỊT SIÊU NẠC </h3>
-                    <p>(26- 60kg thể trọng)</p>
+                    (26- 60kg thể trọng)
                 </td>
-                <td><strong>552SF</strong></td>
-                <td>
-                    <select>
-                        <option value="">-- Chọn đuôi thuốc --</option>
-                        <option value="none">NONE</option>
-                        <option value="S90">S90</option>
-                        <option value="S13">S13</option>
-                        <option value="S54">S54</option>
-                        <option value="S76">S76</option>
-                        <option value="S72">S72</option>
-                    </select>
-                </td>
-                <td><input type="text" placeholder="Cám bao" /></td>
-                <td><input type="text" placeholder="Cám silo" /></td>
+                <td><input type="text" placeholder="chọn bấm X" /></br><b>552SF</b></td>
+                <td><input type="text" placeholder="Đuôi thuốc" /></td>
+                <td><input type="text" placeholder="Đơn vị tấn" /></td>
+                <td><input type="text" placeholder="Bao or silo" /></td>
             </tr>
             <tr>
                 <td>
                     <h3>HEO THỊT SIÊU NẠC </h3>
-                    <p>(61kg- 80kg thể trọng)</p>
+                    (61kg- 80kg thể trọng)
                 </td>
-                <td><strong>552F</strong></td>
-                <td>
-                    <select>
-                        <option value="">-- Chọn đuôi thuốc --</option>
-                        <option value="none">NONE</option>
-                        <option value="S90">S90</option>
-                        <option value="S13">S13</option>
-                        <option value="S54">S54</option>
-                        <option value="S76">S76</option>
-                        <option value="S72">S72</option>
-                    </select>
-                </td>
-                <td><input type="text" placeholder="Cám bao" /></td>
-                <td><input type="text" placeholder="Cám silo" /></td>
+                <td><input type="text" placeholder="chọn bấm X" /></br><b>552F</b></td>
+                <td><input type="text" placeholder="Đuôi thuốc" /></td>
+                <td><input type="text" placeholder="Đơn vị tấn" /></td>
+                <td><input type="text" placeholder="Bao or silo" /></td>
             </tr>
             <tr>
                 <td>
                     <h3>HEO ĐỰC THỊT </h3>
-                    <p>(81 kg thể trọn - 2 tuần trước khi xuất chuồng)</p>
+                    (81 kg thể trọn - 2 tuần trước khi xuất chuồng)
                 </td>
-                <td><strong>553MF</strong></td>
-                <td>
-                    <select>
-                        <option value="">-- Chọn đuôi thuốc --</option>
-                        <option value="none">NONE</option>
-                        <option value="S90">S90</option>
-                        <option value="S13">S13</option>
-                        <option value="S54">S54</option>
-                        <option value="S76">S76</option>
-                        <option value="S72">S72</option>
-                    </select>
-                </td>
-                <td><input type="text" placeholder="Cám bao" /></td>
-                <td><input type="text" placeholder="Cám silo" /></td>
+                <td><input type="text" placeholder="chọn bấm X" /></br><b>553MF</b></td>
+                <td><input type="text" placeholder="Đuôi thuốc" /></td>
+                <td><input type="text" placeholder="Đơn vị tấn" /></td>
+                <td><input type="text" placeholder="Bao or silo" /></td>
             </tr>
             <tr>
                 <td>
-                    <h3>HEO HẬU BỊ GIỐNG </h3>
-                    <p>(8Okg - 100kg thể trọng) </p>
+                    <h3>HEO THỊT </h3>
+                    (81 kg thể trọng- xuất chuồng)
                 </td>
-                <td><strong>562F</strong></td>
-                <td>
-                    <select>
-                        <option value="">-- Chọn đuôi thuốc --</option>
-                        <option value="none">NONE</option>
-                        <option value="S90">S90</option>
-                        <option value="S13">S13</option>
-                        <option value="S54">S54</option>
-                        <option value="S76">S76</option>
-                        <option value="S72">S72</option>
-                    </select>
-                </td>
-                <td><input type="text" placeholder="Cám bao" /></td>
-                <td><input type="text" placeholder="Cám silo" /></td>
-            </tr>
-            <tr>
-                <td>
-                    <h3>HEO HẬU BỊ THAY ĐÀN, HEO NÁI MANG THAI </h3>
-                    <p>(100kg - 300kg thể trọng) </p>
-                </td>
-                <td><strong>566F</strong></td>
-                <td>
-                    <select>
-                        <option value="">-- Chọn đuôi thuốc --</option>
-                        <option value="none">NONE</option>
-                        <option value="S90">S90</option>
-                        <option value="S13">S13</option>
-                        <option value="S54">S54</option>
-                        <option value="S76">S76</option>
-                        <option value="S72">S72</option>
-                    </select>
-                </td>
-                <td><input type="text" placeholder="Cám bao" /></td>
-                <td><input type="text" placeholder="Cám silo" /></td>
-            </tr>
-            <tr>
-                <td>
-                    <h3>HEO NÁI NUÔI CON </h3>
-                    <p>(150kg - 300kg thể trọng) </p>
-                </td>
-                <td><strong>567SF</strong></td>
-                <td>
-                    <select>
-                        <option value="">-- Chọn đuôi thuốc --</option>
-                        <option value="none">NONE</option>
-                        <option value="S90">S90</option>
-                        <option value="S13">S13</option>
-                        <option value="S54">S54</option>
-                        <option value="S76">S76</option>
-                        <option value="S72">S72</option>
-                    </select>
-                </td>
-                <td><input type="text" placeholder="Cám bao" /></td>
-                <td><input type="text" placeholder="Cám silo" /></td>
+                <td><input type="text" placeholder="chọn bấm X" /></br><b>553BF</b></td>
+                <td><input type="text" placeholder="Đuôi thuốc" /></td>
+                <td><input type="text" placeholder="Đơn vị tấn" /></td>
+                <td><input type="text" placeholder="Bao or silo" /></td>
             </tr>
 
         </tbody>
@@ -436,7 +305,6 @@
             <tr>
                 <th rowspan="2">Code thuốc</th>
                 <th rowspan="2">Thuốc điều trị<br />(hoạt chất chính của thuốc)</th>
-                <th rowspan="2">Nồng độ</th>
                 <th rowspan="2">Liều dùng<br />(ppm) g/tấn</th>
                 <th rowspan="2">Khối lượng thuốc trộn (kg/tấn cám) <br />(B)</th>
                 <th colspan="5">
@@ -464,7 +332,6 @@
             <tr>
                 <td>S13</td>
                 <td>Fenbendazole 100mg/gram</td>
-                <td>100</td>
                 <td>40</td>
                 <td>0,40</td>
                 <td>APA Fenba 10P</td>
@@ -482,7 +349,6 @@
             <tr>
                 <td>S13</td>
                 <td>Fenbendazole 200mg/gram</td>
-                <td>200</td>
                 <td>40</td>
                 <td>0,20</td>
                 <td>Fenbazole - 20</td>
@@ -500,7 +366,6 @@
             <tr>
                 <td>S52</td>
                 <td>Tiamulin 800mg/gram</td>
-                <td>800</td>
                 <td>200</td>
                 <td>0,25</td>
                 <td>Denzgard 80% coated</td>
@@ -518,7 +383,6 @@
             <tr>
                 <td>S52</td>
                 <td>Halquinol 600 mg/g</td>
-                <td>600</td>
                 <td>400</td>
                 <td>0,67</td>
                 <td>Rovolin</td>
@@ -526,7 +390,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td></td>
+                <td>1,25</td>
                 <td>Điều trị tiêu chảy</td>
                 <td>Trộn cám</td>
                 <td>Trong ngày</td>
@@ -536,7 +400,6 @@
             <tr>
                 <td>S54</td>
                 <td>Tiamulin 800mg/gram</td>
-                <td>800</td>
                 <td>200</td>
                 <td>0,25</td>
                 <td>Denzgard 80% coated</td>
@@ -554,7 +417,6 @@
             <tr>
                 <td>S54</td>
                 <td>Halquinol 600 mg/g</td>
-                <td>600</td>
                 <td>400</td>
                 <td>0,67</td>
                 <td>Rovolin</td>
@@ -572,7 +434,6 @@
             <tr>
                 <td>S90</td>
                 <td>Tiamulin 800mg/gram</td>
-                <td>800</td>
                 <td>150</td>
                 <td>0,19</td>
                 <td>Denzgard 80% coated</td>
@@ -590,31 +451,26 @@
             <!-- Có thể thêm dòng trống nếu muốn -->
         </tbody>
     </table>
-
-
-    <div class="left">
-        Lưu ý:
-        <input type="text" placeholder="" />
+    <div class="header">
+        Lưu số:
+        <input type="text" placeholder="số" />
     </div>
-    <br />
 
     <div class="row">
         <!-- Cột trái -->
         <div class="column">
             <strong>Người kê đơn</strong><br />
-            <em>(Ký và ghi rõ họ tên)</em>
-            <div class="date-line">
-
-
-                <?php
-        echo "Ngày " . date("d") . " tháng " . date("m") . " năm " . date("Y") . ".";
-      ?>
-            </div>
-            <div class="box-signature"></div>
-            <input type="text" placeholder="Ghi rõ họ và tên" /><br />
             Số CCHN: <input type="text" placeholder="số cchn" /><br />
             Số điện thoại: <input type="text" placeholder="SĐT" /><br />
             Địa chỉ (Theo CMND): <input type="text" placeholder="địa chỉ" /><br />
+            <?php
+      date_default_timezone_set("Asia/Ho_Chi_Minh");
+      echo "Ngày " . date("d") . " tháng " . date("m") . " năm " . date("Y") . ".<br>";
+        ?>
+            <em>(Ký và ghi rõ họ tên)</em>
+
+            <div class="box-signature"></div>
+            <input type="text" placeholder="Nhập họ và tên" /><br />
 
         </div>
 
@@ -632,17 +488,18 @@
             </div>
 
             <div class="box-signature"></div>
-            <input type="text" placeholder="Ghi rõ họ và tên" /><br />
+            <input type="text" placeholder="Nhập họ và tên" /><br />
         </div>
 
         <!-- Cột phải -->
-        <div class="end-column">
-
+        <div class="column" style="text-align: right">
+            <div class="highlight">ĐÃ SỬ DỤNG</div>
+            <br /><br />
             <div class="note">(*) Khám lại xin mang theo đơn này</div>
             <div class="row">
-                <div class="columr"></div>
-                <div class="columnr"></div>
-                <div class="columnr">
+                <div class="column"></div>
+                <div class="column"></div>
+                <div class="column">
                     <strong>Ghi chú:</strong><br />
                     <div class="footer-note">
                         Đơn này được lưu ít nhất 2 năm và được in thành 3 liên.<br />
@@ -653,9 +510,8 @@
                 </div>
 
             </div>
-
-            <div class="footer">
-                <input type="submit" value="Gửi đơn thuốc" />
+            <div align="center" class="signature">
+                <input type="submit" value="Gửi đơn thuốc" style="margin-top: 20px;" />
             </div>
 
 
